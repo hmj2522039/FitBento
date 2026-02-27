@@ -1,12 +1,10 @@
 #pragma once
-#include "GameCore.h"
 
 // ゲームメインループ
 class GameMain
 {
 private:
 	int m_screen;	// 自作スクリーン
-	GameCore gameCore;
 
 public:
 	GameMain() :

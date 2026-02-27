@@ -1,6 +1,8 @@
 #include "GameMain.h"
 #include "GameConfig.h"
-#include "GameCore.h"
+#include "SceneManager.h"
+#include "SceneTitle.h"
+#include "SceneLoading.h"
 #include "Screen.h"
 #include "DxLib.h"
 
@@ -27,6 +29,9 @@ void GameMain::Run()
 		throw - 1;
 	}
 
+	// シーンの起動
+	SceneManager::GetInstance()->Setup(new SceneTitle(), new SceneLoading());
+
 	// スクリーン作成
 	m_screen = MakeScreen(Screen::Width, Screen::Height);
 
@@ -47,14 +52,13 @@ void GameMain::Run()
 			break;
 		}
 
+		SceneManager::GetInstance()->Update();
+
 		// 自作スクリーンに描画
 		SetDrawScreen(m_screen);
 		ClearDrawScreen();
 
-		gameCore.Initialize();
-		gameCore.Update();
-		gameCore.Draw();
-
+		SceneManager::GetInstance()->Draw();
 
 		// 自作スクリーンを裏画面に描画
 		SetDrawScreen(DX_SCREEN_BACK);
@@ -67,4 +71,6 @@ void GameMain::Run()
 		// フレーム内の経過時間が指定したFPSになるまで待つ
 		while (GetNowHiPerformanceCount() - frameStartTime < 1000000 / GameConfig::FPS);
 	}
+
+	SceneManager::GetInstance()->Dispose();
 }
