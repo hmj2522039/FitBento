@@ -1,4 +1,5 @@
 #include "SceneGame.h"
+#include "Food.h"
 #include "Screen.h"
 #include "DxLib.h"
 
@@ -14,7 +15,7 @@ void SceneGame::Finalize()
 
 void SceneGame::Update()
 {
-
+	food.Update();
 }
 
 void SceneGame::Draw()
@@ -24,4 +25,6 @@ void SceneGame::Draw()
 
 	DrawRoundRect(15, 15, 480, 120, 20, 20, GetColor(252, 246, 150), true);
 	DrawStringToHandle(43, 40, "écÇËéûä‘:Å@Å@ïb", GetColor(255, 137, 72), m_fontHandle, GetColor(150, 40, 0));
+
+	food.Draw();
 }

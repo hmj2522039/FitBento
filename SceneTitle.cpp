@@ -2,8 +2,10 @@
 #include "SceneGame.h"
 #include "DxLib.h"
 
+
 void SceneTitle::Initialize()
 {
+
 }
 
 void SceneTitle::Finalize()
@@ -13,8 +15,6 @@ void SceneTitle::Finalize()
 
 void SceneTitle::Update()
 {
-	mouse.Update();
-
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
 		SceneManager::GetInstance()->LoadScene(new SceneGame());
@@ -23,5 +23,4 @@ void SceneTitle::Update()
 
 void SceneTitle::Draw()
 {
-	mouse.Draw();
 }

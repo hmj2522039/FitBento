@@ -1,6 +1,5 @@
 #pragma once
 #include "SceneBase.h"
-#include "Mouse.h"
 
 class SceneTitle : public SceneBase
 {
@@ -9,7 +8,6 @@ private:
 
 	float m_waitTransitionTime;
 
-	Mouse mouse;
 public:
 	SceneTitle() :
 		m_waitTransitionTime(WaitTransitionTime) { }
