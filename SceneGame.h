@@ -3,8 +3,13 @@
 
 class SceneGame : public SceneBase
 {
+private:
+	int m_fontHandle;
+
 public:
-	SceneGame() {}
+	SceneGame() :
+		m_fontHandle(0)
+	{}
 
 	virtual void Initialize()override;
 	virtual void Finalize()override;
