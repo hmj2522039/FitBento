@@ -9,10 +9,11 @@ private:
 	float m_rectRange;		// 中心からの距離
 
 	// マウス操作関連
-	int m_mouseX; // マウスのx座標
-	int m_mouseY; // マウスのy座標
-	int m_clicked; // クリックされたか
-	bool m_isHold; // つかんでいるか
+	int m_mouseX;	// マウスのx座標
+	int m_mouseY;	// マウスのy座標
+	int m_clicked;	// クリックされたか
+	bool m_isHold;	// つかんでいるか
+	bool m_isLocked;	// 既に移動させたものかどうか
 
 public:
 	Food(int x, int y, int w, int h, float range);
