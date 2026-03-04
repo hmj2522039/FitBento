@@ -4,6 +4,7 @@
 #include "SceneTitle.h"
 #include "SceneLoading.h"
 #include "Screen.h"
+//#include "Input.h"
 #include "DxLib.h"
 
 GameMain::~GameMain()
@@ -59,6 +60,7 @@ void GameMain::Run()
 		ClearDrawScreen();
 
 		SceneManager::GetInstance()->Draw();
+
 
 		// Ž©ìƒXƒNƒŠ[ƒ“‚ð— ‰æ–Ê‚É•`‰æ
 		SetDrawScreen(DX_SCREEN_BACK);
