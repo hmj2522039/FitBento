@@ -18,7 +18,6 @@ private:
 	static int m_prevSpace;	// ‘OƒtƒŒ[ƒ€‚Ì“ü—Íó‘Ô
 
 public:
-
 	static void Update();
 
 	static bool IsMouseDown(MouseButton button);

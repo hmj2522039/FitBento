@@ -13,7 +13,6 @@ Food::Food(int x, int y, int w, int h, float range) :
 
 }
 
-
 void Food::Update()
 {
 	GetMousePoint(&m_mouseX, &m_mouseY);
