@@ -1,5 +1,6 @@
 #pragma once
 #include "Food.h"
+#include "FoodManager.h"
 #include "SceneBase.h"
 
 class SceneGame : public SceneBase
@@ -7,12 +8,11 @@ class SceneGame : public SceneBase
 private:
 	int m_fontHandle;
 
-	Food food;
+	FoodManager m_foodManager;
 
 public:
 	SceneGame() :
-		m_fontHandle(0),
-		food(300, 300, 50, 50, 50)
+		m_fontHandle(0)
 	{}
 
 	virtual void Initialize()override;

@@ -1,11 +1,16 @@
 #include "SceneGame.h"
-#include "Food.h"
+#include "FoodPreset.h"
+#include "FoodManager.h"
 #include "Screen.h"
 #include "DxLib.h"
 
 void SceneGame::Initialize()
 {
 	m_fontHandle = CreateFontToHandle("HGPënâpäpÉSÉVÉbÉNUB", 52, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
+
+	auto foods = FoodPreset::CreateInitFoods();
+
+	m_foodManager.SetFoods(foods);
 }
 
 void SceneGame::Finalize()
@@ -15,7 +20,7 @@ void SceneGame::Finalize()
 
 void SceneGame::Update()
 {
-	food.Update();
+	m_foodManager.Update();
 }
 
 void SceneGame::Draw()
@@ -24,7 +29,7 @@ void SceneGame::Draw()
 	DrawBoxAA(0, 0, Screen::Width, Screen::Height, GetColor(246, 255, 194), true);
 	DrawBoxAA(1400, 0, Screen::Width, Screen::Height, GetColor(246, 243, 194), true);
 
-	food.Draw();
+	m_foodManager.Draw();
 
 	// écÇËïbêîï\é¶
 	DrawRoundRect(15, 15, 480, 120, 20, 20, GetColor(252, 246, 150), true);

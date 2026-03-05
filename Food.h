@@ -14,6 +14,10 @@ private:
 public:
 	Food(int x, int y, int w, int h, float range);
 
+	void SetHold();	// ‚Â‚©‚Þ
+	bool CheckHold() const;	// ‚Â‚©‚ß‚é‚©‚Ç‚¤‚©‚Ì”»’è
+	bool IsLocked() const;
+
 	void Update();
 	void Draw();
 };

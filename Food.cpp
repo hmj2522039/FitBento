@@ -13,24 +13,28 @@ Food::Food(int x, int y, int w, int h, float range) :
 
 }
 
+bool Food::CheckHold() const
+{
+	float dx = Input::m_mouseX - m_foodX;
+	float dy = Input::m_mouseY - m_foodY;
+	float mouseDistance = dx * dx + dy * dy;
+	float range = m_rectRange * m_rectRange;
+
+	return mouseDistance < range;
+}
+
+void Food::SetHold()
+{
+	m_isHold = true;
+}
+
+bool Food::IsLocked() const
+{
+	return m_isLocked;
+}
+
 void Food::Update()
 {
-	
-	// おかずをつかむ
-	if(Input::IsMouseDown(Left) && !m_isLocked)
-	{
-		// マウスポインタとおかず中心の距離の差
-		float dx = Input::m_mouseX - m_foodX;
-		float dy = Input::m_mouseY - m_foodY;
-		float mouseDistance = dx * dx + dy * dy;
-		float range = m_rectRange * m_rectRange;
-
-		if (mouseDistance < range)
-		{
-			m_isHold = true;
-		}
-	}
-	
 	// おかずの移動
 	if (m_isHold)
 	{
