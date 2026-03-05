@@ -15,14 +15,13 @@ Food::Food(int x, int y, int w, int h, float range) :
 
 void Food::Update()
 {
-	GetMousePoint(&m_mouseX, &m_mouseY);
 	
 	// おかずをつかむ
 	if(Input::IsMouseDown(Left) && !m_isLocked)
 	{
 		// マウスポインタとおかず中心の距離の差
-		float dx = m_mouseX - m_foodX;
-		float dy = m_mouseY - m_foodY;
+		float dx = Input::m_mouseX - m_foodX;
+		float dy = Input::m_mouseY - m_foodY;
 		float mouseDistance = dx * dx + dy * dy;
 		float range = m_rectRange * m_rectRange;
 
@@ -35,8 +34,8 @@ void Food::Update()
 	// おかずの移動
 	if (m_isHold)
 	{
-		m_foodX = m_mouseX;
-		m_foodY = m_mouseY;
+		m_foodX = Input::m_mouseX;
+		m_foodY = Input::m_mouseY;
 
 		// スペースでおかずを離す
 		if (Input::IsSpaceDown())

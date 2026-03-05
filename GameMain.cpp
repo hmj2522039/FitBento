@@ -4,7 +4,7 @@
 #include "SceneTitle.h"
 #include "SceneLoading.h"
 #include "Screen.h"
-//#include "Input.h"
+#include "Input.h"
 #include "DxLib.h"
 
 GameMain::~GameMain()
@@ -54,6 +54,8 @@ void GameMain::Run()
 		}
 
 		SceneManager::GetInstance()->Update();
+
+		Input::Update();
 
 		// ©ìƒXƒNƒŠ[ƒ“‚É•`‰æ
 		SetDrawScreen(m_screen);

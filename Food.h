@@ -8,10 +8,6 @@ private:
 	int m_foodW, m_foodH;	// 判定矩形の高さ、幅
 	float m_rectRange;		// 中心からの距離
 
-	// マウス操作関連
-	int m_mouseX;	// マウスのx座標
-	int m_mouseY;	// マウスのy座標
-
 	bool m_isHold;	// つかんでいるか
 	bool m_isLocked;// 既に移動させたものかどうか
 

@@ -1,6 +1,9 @@
 #include "Input.h"
 #include "DxLib.h"
 
+int Input::m_mouseX = 0;
+int Input::m_mouseY = 0;
+
 int Input::m_mouse[ButtonCount] = { 0 };
 int Input::m_prevMouse[ButtonCount] = { 0 };
 
@@ -9,6 +12,8 @@ int Input::m_prevSpace = 0;
 
 void Input::Update()
 {
+	GetMousePoint(&m_mouseX, &m_mouseY);
+
 	// ‘OƒtƒŒ[ƒ€‚Ìó‘Ô
 	for (int i = 0; i < ButtonCount; i++)
 	{

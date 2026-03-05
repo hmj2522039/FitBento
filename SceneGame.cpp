@@ -1,7 +1,6 @@
 #include "SceneGame.h"
 #include "Food.h"
 #include "Screen.h"
-#include "Input.h"
 #include "DxLib.h"
 
 void SceneGame::Initialize()
@@ -16,8 +15,6 @@ void SceneGame::Finalize()
 
 void SceneGame::Update()
 {
-	Input::Update();
-
 	food.Update();
 }
 
