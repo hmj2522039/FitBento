@@ -46,7 +46,40 @@ void FoodList::Draw()
 
 		// おかずの名前
 		DrawString(baseX + 20, y + 140, m_templates[i].name, GetColor(50, 50, 50));
+
+		DrawBox(baseX, y, baseX + 350, y + 200, GetColor(255, 200, 0),false); 
 	}
+
+	// スクロールバー
+	int barX = 1900;
+	int barY = 50;
+	int barWidth = 10;
+	int barHeight = Screen::Height - 100;
+
+	// バーの背景
+	DrawBox(barX, barY, barX + barWidth, barY + barHeight, GetColor(200, 200, 200), true);
+
+	// おかずリスト全体の高さ
+	int listHeight = m_templates.size() * 200;
+
+	// 表示範囲
+	int viewHeight = Screen::Height - 100;
+
+	// つまみの高さ
+	int thumbHeight = (int)((float)viewHeight / listHeight * barHeight);
+	if (thumbHeight < 20) thumbHeight = 20;
+
+	// つまみの位置
+	int thumbY = barY; 
+	if (m_scrollMax > 0)
+	{
+		float rate = -(float)m_scroll / m_scrollMax;	// 表示している範囲÷リスト全体の高さ
+		thumbY = barY + (int)(rate * (barHeight - thumbHeight));
+	}
+
+	// つまみの描画
+	DrawBox(barX, thumbY, barX + barWidth, thumbY + thumbHeight, GetColor(120, 120, 120), true);
+
 }
 
 bool FoodList::CheckClick(Food& food)
@@ -59,7 +92,8 @@ bool FoodList::CheckClick(Food& food)
 	{
 		int y = baseY + i * 200;
 
-		if (mouse.x >= baseX && mouse.x <= baseX + 480 && mouse.y >= y && mouse.y <= y + 180)
+
+		if (mouse.x >= baseX && mouse.x <= baseX + 350 && mouse.y >= y && mouse.y <= y + 180)
 		{
 			if (Input::IsMouseDown(Left))
 			{
