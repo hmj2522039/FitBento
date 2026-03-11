@@ -1,20 +1,22 @@
 #include "Input.h"
 #include "DxLib.h"
 
-int Input::m_mouseX = 0;
-int Input::m_mouseY = 0;
-
 int Input::m_mouse[ButtonCount] = { 0 };
 int Input::m_prevMouse[ButtonCount] = { 0 };
+
+int Input::m_wheel = 0;
+
+Vec2 Input::m_point = Vec2(0, 0);
 
 int Input::m_space = 0;
 int Input::m_prevSpace = 0;
 
 void Input::Update()
 {
-	GetMousePoint(&m_mouseX, &m_mouseY);
+	int mouseX, mouseY;
+	GetMousePoint(&mouseX, &mouseY);
+	m_point = Vec2(mouseX, mouseY);
 
-	// 前フレームの状態
 	for (int i = 0; i < ButtonCount; i++)
 	{
 		m_prevMouse[i] = m_mouse[i];
@@ -25,7 +27,7 @@ void Input::Update()
 
 	// 現フレームの入力状態を取得
 	int mouseClick = GetMouseInput();
-	m_mouse[Left]  = (mouseClick & MOUSE_INPUT_LEFT);
+	m_mouse[Left] = (mouseClick & MOUSE_INPUT_LEFT);
 	m_mouse[Right] = (mouseClick & MOUSE_INPUT_RIGHT);
 
 	m_space = CheckHitKey(KEY_INPUT_SPACE);

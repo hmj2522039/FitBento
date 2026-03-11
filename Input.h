@@ -1,4 +1,5 @@
 #pragma once
+#include "Vector2.h"
 
 // マウスの入力
 enum MouseButton
@@ -15,6 +16,12 @@ private:
 	static int m_mouse[ButtonCount];
 	static int m_prevMouse[ButtonCount];	// 前フレームの入力状態
 
+	// ホイール
+	static int m_wheel;
+
+	// マウス座標
+	static Vec2 m_point;
+
 	// スペースキー
 	static int m_space;
 	static int m_prevSpace;	// 前フレームの入力状態
@@ -22,10 +29,15 @@ private:
 public:
 	static void Update();
 
-	// マウス座標
-	static int m_mouseX;	// マウスのx座標
-	static int m_mouseY;	// マウスのy座標
+	// 位置取得
+	static Vec2 GetPoint() { return m_point; }
 
+	// ホイール取得
+	static int GetWheel() { return m_wheel; }
+
+	// マウスボタンが押された瞬間
 	static bool IsMouseDown(MouseButton button);
+
+	// スペースキーが押された瞬間
 	static bool IsSpaceDown();
 };

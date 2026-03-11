@@ -4,7 +4,7 @@
 #include "math.h"
 
 Food::Food(int x, int y) :
-	m_foodX(x), m_foodY(y),
+	m_foodPos(x, y),
 	m_isHold(false),
 	m_isLocked(false)
 {
@@ -25,13 +25,13 @@ bool Food::CheckHold() const
 {
 	for (auto& p : m_parts)
 	{
-		int x1 = m_foodX + p.offsetX - p.width	/ 2;
-		int y1 = m_foodY + p.offsetY - p.height	/ 2;
-		int x2 = m_foodX + p.offsetX + p.width	/ 2;
-		int y2 = m_foodY + p.offsetY + p.height	/ 2;
+		Vec2 p1 = m_foodPos + Vec2(p.offsetX - p.width / 2, p.offsetY - p.height / 2);
+		Vec2 p2 = m_foodPos + Vec2(p.offsetX + p.width / 2, p.offsetY + p.height / 2);
 
-		if (Input::m_mouseX >= x1 && Input::m_mouseX <= x2 &&
-			Input::m_mouseY >= y1 && Input::m_mouseY <= y2)
+		Vec2 mouse = Input::GetPoint();
+
+		if (mouse.x >= p1.x && mouse.x <= p2.x &&
+			mouse.y >= p1.y && mouse.y <= p2.y)
 		{
 			return true;
 		}
@@ -49,8 +49,7 @@ void Food::Update()
 	// おかずの移動
 	if (m_isHold)
 	{
-		m_foodX = Input::m_mouseX;
-		m_foodY = Input::m_mouseY;
+		m_foodPos = Input::GetPoint();
 
 		// スペースでおかずを離す
 		if (Input::IsSpaceDown())
@@ -71,12 +70,10 @@ void Food::Draw()
 
 	for (auto& p : m_parts)
 	{
-		int x1 = m_foodX + p.offsetX - p.width	/ 2;
-		int y1 = m_foodY + p.offsetY - p.height	/ 2;
-		int x2 = m_foodX + p.offsetX + p.width	/ 2;
-		int y2 = m_foodY + p.offsetY + p.height	/ 2;
+		Vec2 p1 = m_foodPos + Vec2(p.offsetX - p.width / 2, p.offsetY - p.height / 2);
+		Vec2 p2 = m_foodPos + Vec2(p.offsetX + p.width / 2, p.offsetY + p.height / 2);
 		
-		DrawBox(x1, y1, x2, y2, color, true);
+		DrawBox((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y, color, true);
 	}
 
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);

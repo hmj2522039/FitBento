@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "Vector2.h"
 
 // 複数矩形表示用
 struct BoxPart
@@ -12,7 +13,7 @@ class Food
 {
 private:
 	// おかず
-	int m_foodX, m_foodY;	// おかずの中心座標
+	Vec2 m_foodPos;	// おかずの座標
 
 	bool m_isHold;	// つかんでいるか
 	bool m_isLocked;// 既に移動させたものかどうか
