@@ -9,6 +9,7 @@ private:
 
 public:
 	void SetFoods(const std::vector<Food>& foods);
+	void AddFood(const Food& f);
 
 	void Update();
 	void Draw();

@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="FoodList.cpp" />
     <ClCompile Include="FoodManager.cpp" />
     <ClCompile Include="FoodPreset.cpp" />
+    <ClCompile Include="FoodTemplate.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -152,8 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Food.h" />
+    <ClInclude Include="FoodList.h" />
     <ClInclude Include="FoodManager.h" />
     <ClInclude Include="FoodPreset.h" />
+    <ClInclude Include="FoodTemplate.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="Input.h" />

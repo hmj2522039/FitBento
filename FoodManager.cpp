@@ -7,6 +7,11 @@ void FoodManager::SetFoods(const std::vector<Food>& foods)
 	m_foods = foods;
 }
 
+void FoodManager::AddFood(const Food& f)
+{
+	m_foods.push_back(f);
+}
+
 void FoodManager::Update()
 {
 	if (Input::IsMouseDown(Left))

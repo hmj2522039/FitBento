@@ -24,6 +24,7 @@ void Input::Update()
 
 	m_prevSpace = m_space;
 
+	m_wheel = GetMouseWheelRotVol();
 
 	// Œ»ƒtƒŒ[ƒ€‚Ì“ü—Íó‘Ô‚ğæ“¾
 	int mouseClick = GetMouseInput();

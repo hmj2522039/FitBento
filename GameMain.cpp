@@ -53,9 +53,9 @@ void GameMain::Run()
 			break;
 		}
 
-		SceneManager::GetInstance()->Update();
-
 		Input::Update();
+
+		SceneManager::GetInstance()->Update();
 
 		// ©ìƒXƒNƒŠ[ƒ“‚É•`‰æ
 		SetDrawScreen(m_screen);

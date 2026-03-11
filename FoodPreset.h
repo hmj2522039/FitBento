@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
-#include "Food.h"
+#include "FoodTemplate.h"
 
 class FoodPreset
 {
 public:
-	static std::vector<Food> CreateInitFoods();
+	static std::vector<FoodTemplate> CreateFoodTemplates();
 };
