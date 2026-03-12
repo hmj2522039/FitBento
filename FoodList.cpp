@@ -13,16 +13,13 @@ void FoodList::Update()
 	// ホイールスクロール
 	m_scroll += Input::GetWheel() * 30;
 
-	// おかずの高さ
-	const int okazuHeight = 200;
-
 	// リストの高さ
-	int listHeight = m_templates.size() * okazuHeight;
+	int listHeight = m_templates.size() * layout.m_listFoodHeight;
 
 	// 表示範囲
-	int viewHeight = Screen::Height - 100;
+	int viewHeight = Screen::Height - layout.m_marginTopBottom;
 
-	// スクロールの最大値がマイナスにならないようにする
+	// スクロールの最大値
 	m_scrollMax = listHeight - viewHeight;
 	if (m_scrollMax < 0) m_scrollMax = 0;
 
@@ -33,37 +30,38 @@ void FoodList::Update()
 
 void FoodList::Draw()
 {
-	int baseX = 1470;
-	int baseY = 50 + m_scroll;
+	int baseX = layout.m_baseX;
+	int baseY = layout.m_baseY + m_scroll;
 
 	for (int i = 0; i < m_templates.size(); i++)
 	{
-		int y = baseY + i * 200;
+		int y = baseY + i * layout.m_listFoodHeight;
 
 		// おかずを描画
-		Food temp = m_templates[i].CreateFoodAt(baseX + 240, y + 90);
+		Food temp = m_templates[i].CreateFoodAt(baseX + layout.m_foodOffsetX, y + layout.m_foodOffsetY);
 		temp.Draw();
 
 		// おかずの名前
-		DrawString(baseX + 20, y + 140, m_templates[i].name, GetColor(50, 50, 50));
+		DrawString(baseX + layout.m_nameOffsetX, y + layout.m_nameOffsetY, m_templates[i].name, GetColor(50, 50, 50));
 
-		DrawBox(baseX, y, baseX + 350, y + 200, GetColor(255, 200, 0),false); 
+		// 枠
+		DrawBox(baseX, y, baseX + layout.m_listFoodWidth, y + layout.m_listFoodHeight, GetColor(255, 200, 0),false); 
 	}
 
 	// スクロールバー
-	int barX = 1900;
-	int barY = 50;
-	int barWidth = 10;
-	int barHeight = Screen::Height - 100;
+	int barX = layout.m_barX;
+	int barY = layout.m_barTop;
+	int barWidth = layout.m_barWidth;
+	int barHeight = Screen::Height - layout.m_marginTopBottom;
 
 	// バーの背景
 	DrawBox(barX, barY, barX + barWidth, barY + barHeight, GetColor(200, 200, 200), true);
 
 	// おかずリスト全体の高さ
-	int listHeight = m_templates.size() * 200;
+	int listHeight = m_templates.size() * layout.m_listFoodHeight;
 
 	// 表示範囲
-	int viewHeight = Screen::Height - 100;
+	int viewHeight = Screen::Height - layout.m_marginTopBottom;
 
 	// つまみの高さ
 	int thumbHeight = (int)((float)viewHeight / listHeight * barHeight);
@@ -85,15 +83,15 @@ void FoodList::Draw()
 bool FoodList::CheckClick(Food& food)
 {
 	Vec2 mouse = Input::GetPoint();
-	int baseX = 1470;
-	int baseY = 50 + m_scroll;
+	int baseX = layout.m_baseX;
+	int baseY = layout.m_baseY + m_scroll;
 
 	for (int i = 0; i < m_templates.size(); i++)
 	{
-		int y = baseY + i * 200;
+		int y = baseY + i * layout.m_listFoodHeight;
 
-
-		if (mouse.x >= baseX && mouse.x <= baseX + 350 && mouse.y >= y && mouse.y <= y + 180)
+		if (mouse.x >= baseX && mouse.x <= baseX + layout.m_listFoodWidth && 
+			mouse.y >= y	 && mouse.y <= y	 + layout.m_listFoodHeight)
 		{
 			if (Input::IsMouseDown(Left))
 			{
