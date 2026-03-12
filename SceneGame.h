@@ -1,4 +1,5 @@
 #pragma once
+#include "LunchBox.h"
 #include "FoodList.h"
 #include "FoodManager.h"
 #include "SceneBase.h"
@@ -8,6 +9,7 @@ class SceneGame : public SceneBase
 private:
 	int m_fontHandle;
 
+	LunchBox m_lunchBox;
 	FoodList m_foodList;
 	FoodManager m_foodManager;
 

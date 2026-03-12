@@ -11,6 +11,10 @@ void FoodList::SetTemplates(const std::vector<FoodTemplate>& t)
 void FoodList::Update()
 {
 	// ホイールスクロール
+	Vec2 mouse = Input::GetPoint();
+	if (mouse.x >= Screen::Width - 520 && mouse.x <= Screen::Width &&
+		mouse.y >= Screen::Top && mouse.y <= Screen::Height)
+
 	m_scroll += Input::GetWheel() * 30;
 
 	// リストの高さ

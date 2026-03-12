@@ -10,7 +10,7 @@ struct FoodListLayout
 	int m_baseY = 50;
 
 	// リストにあるおかずの範囲
-	int m_listFoodWidth = 350;
+	int m_listFoodWidth	= 350;
 	int m_listFoodHeight = 200;
 
 	// 名前表示のオフセット
