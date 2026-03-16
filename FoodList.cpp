@@ -100,7 +100,6 @@ bool FoodList::CheckClick(Food& food)
 			if (Input::IsMouseDown(Left))
 			{
 				food = m_templates[i].CreateFoodAt(mouse.x, mouse.y);
-				food.SetHold();
 				return true;
 			}
 		}

@@ -26,7 +26,6 @@ public:
 	void AddBoxPart(const BoxPart& part);
 
 	void SetHold();	// ‚Â‚©‚Þ
-	bool CheckHold() const;	// ‚Â‚©‚ß‚é‚©‚Ç‚¤‚©‚Ì”»’è
 	bool IsLocked() const;
 
 	void Update();

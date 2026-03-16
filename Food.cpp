@@ -21,24 +21,6 @@ void Food::SetHold()
 	m_isHold = true;
 }
 
-bool Food::CheckHold() const
-{
-	for (auto& p : m_parts)
-	{
-		Vec2 p1 = m_foodPos + Vec2(p.offsetX - p.width / 2, p.offsetY - p.height / 2);
-		Vec2 p2 = m_foodPos + Vec2(p.offsetX + p.width / 2, p.offsetY + p.height / 2);
-
-		Vec2 mouse = Input::GetPoint();
-
-		if (mouse.x >= p1.x && mouse.x <= p2.x &&
-			mouse.y >= p1.y && mouse.y <= p2.y)
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
 bool Food::IsLocked() const
 {
 	return m_isLocked;

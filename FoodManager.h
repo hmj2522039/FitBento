@@ -7,9 +7,15 @@ class FoodManager
 private:
 	std::vector<Food> m_foods;
 
+	// åªç›Ç¬Ç©ÇÒÇ≈Ç¢ÇÈFood
+	Food* m_heldFood = nullptr;
+
 public:
 	void SetFoods(const std::vector<Food>& foods);
-	void AddFood(const Food& f);
+	Food& AddFood(const Food& f);
+
+	bool IsAnyFoodHold()const;
+	void HoldFood(Food& f);
 
 	void Update();
 	void Draw();

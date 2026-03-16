@@ -7,35 +7,34 @@ void FoodManager::SetFoods(const std::vector<Food>& foods)
 	m_foods = foods;
 }
 
-void FoodManager::AddFood(const Food& f)
+Food& FoodManager::AddFood(const Food& f)
 {
 	m_foods.push_back(f);
+	return m_foods.back();
+}
+
+bool FoodManager::IsAnyFoodHold()const
+{
+	return m_heldFood != nullptr;
+}
+
+void FoodManager::HoldFood(Food& f)
+{
+	f.SetHold();
+	m_heldFood = &f;
 }
 
 void FoodManager::Update()
 {
-	if (Input::IsMouseDown(Left))
-	{
-		// d‚È‚Á‚Ä‚¢‚éã‚Ì‚¨‚©‚¸‚©‚ç”»’è‚ğs‚¤
-		for (int i = m_foods.size() - 1; i >= 0; i--)
-		{
-			// Šù‚ÉˆÚ“®Ï‚İ‚È‚ç‚Â‚©‚ß‚È‚¢
-			if (m_foods[i].IsLocked())
-			{
-				continue;
-			}
-
-			if (m_foods[i].CheckHold())
-			{
-				m_foods[i].SetHold();
-				break;
-			}
-		}
-	}
-
 	for (auto& f : m_foods)
 	{
 		f.Update();
+
+		// ‚Â‚©‚İó‘Ô‚ğ‰ğœ
+		if (f.IsLocked() && m_heldFood == &f)
+		{
+			m_heldFood = nullptr;
+		}
 	}
 }
 
