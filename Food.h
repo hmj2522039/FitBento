@@ -23,10 +23,10 @@ private:
 public:
 	Food(int x, int y);
 
-	void AddBoxPart(const BoxPart& part);
-
+	void AddBoxPart(const BoxPart& part);	// 当たり判定用のboxパーツを追加する
 	void SetHold();	// つかむ
-	bool IsLocked() const;
+	void Rotate();	// 回転
+	bool IsLocked() const; // 設置済み
 
 	void Update();
 	void Draw();

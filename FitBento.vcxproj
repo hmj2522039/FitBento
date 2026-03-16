@@ -146,6 +146,7 @@
     <ClCompile Include="FoodTemplate.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LunchBox.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneLoading.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="LunchBox.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneLoading.h" />

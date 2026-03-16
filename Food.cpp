@@ -21,6 +21,11 @@ void Food::SetHold()
 	m_isHold = true;
 }
 
+void Food::Rotate()
+{
+
+}
+
 bool Food::IsLocked() const
 {
 	return m_isLocked;
