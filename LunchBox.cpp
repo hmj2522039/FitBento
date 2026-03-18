@@ -1,21 +1,28 @@
 #include "LunchBox.h"
-#include "Vector2.h"
-#include "Screen.h"
-#include "DxLib.h"
 
-void LunchBox::Initialize()
+LunchBox::LunchBox(int graph, Vec2 pos)
+    : m_graph(graph), m_pos(pos)
 {
-	m_image = LoadGraph("Resource/LunchBox.png");
 }
 
-void LunchBox::Update()
+void LunchBox::SetSlots(const std::vector<BentoSlot>& slots)
 {
+    m_slots = slots;
+}
 
-
-
+const std::vector<BentoSlot>& LunchBox::GetSlots() const
+{
+    return m_slots;
 }
 
 void LunchBox::Draw()
 {
-	DrawGraph(188, 50 + 50, m_image, true);
+    // ïŸìñî†âÊëúï`âÊ
+    DrawGraph((int)m_pos.x, (int)m_pos.y, m_graph, true);
+
+    // ãÛÇ´ÉXÉçÉbÉgï`âÊ
+    for (auto& s : m_slots)
+    {
+        s.Draw();
+    }
 }

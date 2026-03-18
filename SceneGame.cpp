@@ -1,29 +1,69 @@
 #include "SceneGame.h"
+#include "SceneResult.h"
 #include "FoodPreset.h"
 #include "FoodManager.h"
 #include "Input.h"
 #include "Screen.h"
 #include "DxLib.h"
+#include <string>
 
 void SceneGame::Initialize()
 {
+	// 弁当箱画像読み込み
+	int graph = LoadGraph("Resource/LunchBox.png");
+	
+	// フォント
 	m_fontHandle = CreateFontToHandle("HGP創英角ゴシックUB", 52, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
 
-	auto templates = FoodPreset::CreateFoodTemplates();
-	m_foodList.SetTemplates(templates);
+	// 弁当箱生成
+	m_lunchBox = new LunchBox(graph, Vec2(200, 100));
 
-	m_lunchBox.Initialize();
+	// 空きスロット設定
+	std::vector<BentoSlot> slots;
+	slots.push_back({ Vec2(750, 350), 150, 150, 0 });
+	slots.push_back({ Vec2(750, 700), 50, 150, 90 });
 
-	m_foodManager.SetFoods({});
+	m_lunchBox->SetSlots(slots);
+	m_foodManager.SetSlots(slots);
+
+	// おあずテンプレートの設定
+	m_foodList.SetTemplates(FoodPreset::CreateFoodTemplates());
+
+	// スコア・タイマー
+	m_score = 0;
+	m_timer = 90 * 60;
+
+	m_lastGain = 0;
+	m_gainTimer = 0;
 }
 
 void SceneGame::Finalize()
 {
-	DeleteFontToHandle(m_fontHandle);
+	if (m_lunchBox)
+	{
+		delete m_lunchBox;
+		m_lunchBox = nullptr;
+	}
 }
 
 void SceneGame::Update()
 {
+	// 制限時間
+	m_timer--;
+	if (m_timer <= 0)
+	{
+		SceneManager::GetInstance()->LoadScene(new SceneResult(m_score));
+		return;
+	}
+
+	// すべてのスロットが埋まったら終了
+	if (m_foodManager.GetLockedCount() >= (int)m_lunchBox->GetSlots().size())
+	{
+		SceneManager::GetInstance()->LoadScene(new SceneResult(m_score));
+		return;
+	}
+
+
 	m_foodList.Update();
 
 	if (!m_foodManager.IsAnyFoodHold())
@@ -37,26 +77,54 @@ void SceneGame::Update()
 	}
 
 	m_foodManager.Update();
+	
+	int gain = m_foodManager.PopLastGain();
+	if (gain > 0)
+	{
+		m_score += gain;
+		m_lastGain = gain;
+		m_gainTimer = 60;
+	}
+
+	if (m_gainTimer > 0)
+	{
+		m_gainTimer--;
+	}
 }
 
 void SceneGame::Draw()
 {
-	//// 背景
+	// 背景
 	DrawBoxAA(0, 0, Screen::Width, Screen::Height, GetColor(246, 255, 194), true);
 
-	//// 弁当箱
-	m_lunchBox.Draw();
+	// 弁当箱
+	m_lunchBox->Draw();
 
-	//// おかずリスト側背景
+	// おかずリスト側背景
 	DrawBoxAA(Screen::Width - 520, 0, Screen::Width, Screen::Height, GetColor(246, 243, 194), true);
 
-	////// おかずリストを描画
+	// おかずリストを描画
 	m_foodList.Draw();
 
-	////// おかずの描画
+	// おかずの描画
 	m_foodManager.Draw();
 
-	////// 残り秒数表示
-	DrawRoundRect(15, 15, 480, 120, 20, 20, GetColor(252, 246, 150), true);
-	DrawStringToHandle(43, 40, "残り時間:　　秒", GetColor(255, 137, 72), m_fontHandle, GetColor(150, 40, 0));
+	// スコア
+	DrawRoundRect(Screen::Width - 950, 15, 1300, 120, 20, 20, GetColor(252, 246, 150), true);
+	DrawStringToHandle(Screen::Width - 900, 40, ("スコア:" + std::to_string(m_score)).c_str(),GetColor(255, 137, 72), m_fontHandle);
+
+
+	// 獲得スコア
+	if (m_gainTimer > 0)
+	{
+		DrawStringToHandle(Screen::Width / 2 - 50, 80,
+			("+" + std::to_string(m_lastGain)).c_str(),
+			GetColor(255, 0, 0), m_fontHandle);
+	}
+
+	// 残り秒数表示
+	DrawRoundRect(15, 15, 280, 120, 20, 20, GetColor(252, 246, 150), true);
+	DrawStringToHandle(43, 40,
+		("残り" + std::to_string(m_timer / 60) + "秒").c_str(),
+		GetColor(255, 137, 72), m_fontHandle);
 }

@@ -151,9 +151,11 @@
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneLoading.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneResult.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BentoSlot.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="FoodList.h" />
     <ClInclude Include="FoodManager.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneLoading.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneResult.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Vector2.h" />

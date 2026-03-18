@@ -29,6 +29,8 @@ public:
 	void SetHold();	// ‚Â‚©‚Ş
 	void Rotate();	// ‰ñ“]
 	bool IsLocked() const; // İ’uÏ‚İ
+	Vec2 GetPos()const { return m_foodPos; }
+	int GetAngle() const { return m_angle; }
 
 	void Update();
 	void Draw();
