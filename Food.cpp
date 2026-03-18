@@ -25,7 +25,7 @@ void Food::SetHold()
 // ‰ñ“]
 void Food::Rotate()
 {
-	m_angle = (m_angle - 45) % 360;
+	m_angle = (m_angle - 90) % 360;
 }
 
 bool Food::IsLocked() const

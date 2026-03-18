@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BentoSlot.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodList.cpp" />
     <ClCompile Include="FoodManager.cpp" />

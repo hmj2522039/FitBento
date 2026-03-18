@@ -27,10 +27,13 @@ public:
 
 	void AddBoxPart(const BoxPart& part);	// 当たり判定用のboxパーツを追加する
 	void SetHold();	// つかむ
+
 	void Rotate();	// 回転
 	bool IsLocked() const; // 設置済み
+
 	Vec2 GetPos()const { return m_foodPos; }
 	int GetAngle() const { return m_angle; }
+	const std::vector<BoxPart>& GetParts() const { return m_parts; }
 
 	void Update();
 	void Draw();
