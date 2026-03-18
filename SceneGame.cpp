@@ -18,10 +18,21 @@ void SceneGame::Initialize()
 	// 弁当箱生成
 	m_lunchBox = new LunchBox(graph, Vec2(200, 100));
 
-	// 空きスロット設定
+	// 空きスペーススロット
 	std::vector<BentoSlot> slots;
-	slots.push_back({ Vec2(750, 350), 150, 150, 0 });
-	slots.push_back({ Vec2(750, 700), 50, 150, 90 });
+	{
+		BentoSlot s;
+		s.pos = Vec2(750, 350);
+		s.parts.push_back({ 0, 0, 150, 150 });
+		slots.push_back(s);
+	}
+
+	{
+		BentoSlot s;
+		s.pos = Vec2(750, 700);
+		s.parts.push_back({ 0, 0, 50, 150 });
+		slots.push_back(s);
+	}
 
 	m_lunchBox->SetSlots(slots);
 	m_foodManager.SetSlots(slots);
