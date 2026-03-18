@@ -4,6 +4,10 @@
 class SceneTitle : public SceneBase
 {
 private:
+	// ƒtƒHƒ“ƒg
+	int m_fontHandle;
+	int m_fontHandleTitle;
+
 	static constexpr float WaitTransitionTime = 0.5f;
 
 	float m_waitTransitionTime;

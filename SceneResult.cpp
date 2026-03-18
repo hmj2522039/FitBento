@@ -47,10 +47,9 @@ void SceneResult::Draw()
         m_fontHandle
     );
 
-    DrawFormatString(
-        Screen::Width / 2 - 150,
-        Screen::Height / 2 + 50,
-        GetColor(0, 0, 0),
-        "SPACEを押してタイトルへ戻る"
-    );
+    DrawStringToHandle(
+        580, Screen::Height - 100,
+        "スペースを押してタイトルに戻る",
+        GetColor(255, 137, 72),
+        m_fontHandle);
 }
