@@ -1,5 +1,6 @@
 #include "SceneTitle.h"
 #include "SceneGame.h"
+#include "Input.h"
 #include "DxLib.h"
 
 
@@ -15,7 +16,7 @@ void SceneTitle::Finalize()
 
 void SceneTitle::Update()
 {
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	if (Input::IsSpaceDown())
 	{
 		SceneManager::GetInstance()->LoadScene(new SceneGame());
 	}

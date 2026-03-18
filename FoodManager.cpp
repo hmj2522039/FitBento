@@ -62,23 +62,7 @@ int FoodManager::JudgeFood(const Food& f)
     int posScore = 50 - (int)(dist * 0.5f);
     if (posScore < 0) posScore = 0;
 
-    // 角度ズレ（正方形は角度のずれを判定しない）
-    int angleScore = 0;
-    if (best->width == best->height)
-    {
-        angleScore = 50;
-    }
-    else
-    {
-        int angleDiff = abs(f.GetAngle() - best->correctAngle);
-        angleDiff %= 360;
-        if (angleDiff > 180) angleDiff = 360 - angleDiff;
-
-        angleScore = 50 - angleDiff;
-        if (angleScore < 0) angleScore = 0;
-    }
-
-    return posScore + angleScore;
+    return posScore;
 }
 
 
