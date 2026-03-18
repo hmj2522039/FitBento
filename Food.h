@@ -18,6 +18,8 @@ private:
 	bool m_isHold;	// ‚Â‚©‚ñ‚Å‚¢‚é‚©
 	bool m_isLocked;// Šù‚ÉˆÚ“®‚³‚¹‚½‚à‚Ì‚©‚Ç‚¤‚©
 
+	int m_angle;	// ‚¨‚©‚¸‚ÌŠp“x
+
 	std::vector<BoxPart> m_parts;
 
 public:

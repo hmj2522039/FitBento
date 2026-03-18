@@ -97,6 +97,7 @@ bool FoodList::CheckClick(Food& food)
 		if (mouse.x >= baseX && mouse.x <= baseX + layout.m_listFoodWidth && 
 			mouse.y >= y	 && mouse.y <= y	 + layout.m_listFoodHeight)
 		{
+			// おかずをつかむ（マウス座標に追従するおかずを追加）
 			if (Input::IsMouseDown(Left))
 			{
 				food = m_templates[i].CreateFoodAt(mouse.x, mouse.y);

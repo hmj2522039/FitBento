@@ -43,14 +43,12 @@ std::vector<FoodTemplate> FoodPreset::CreateFoodTemplates()
 
 	FoodTemplate test7;
 	test7.name = "test7";
-	test7.parts.push_back({ -50, 0, 50, 150 });
-	test7.parts.push_back({ 0,50,150,50 });
+	test7.parts.push_back({ 0,0,50,150 });
 	foods.push_back(test7);
 
 	FoodTemplate test8;
 	test8.name = "test8";
-	test8.parts.push_back({ -50, 0, 50, 150 });
-	test8.parts.push_back({ 0,50,150,50 });
+	test8.parts.push_back({ 0, 0, 150, 50 });
 	foods.push_back(test8);
 
 	return foods;

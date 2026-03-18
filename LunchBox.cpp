@@ -17,5 +17,5 @@ void LunchBox::Update()
 
 void LunchBox::Draw()
 {
-	DrawGraph(188, 50, m_image, true);
+	DrawGraph(188, 50 + 50, m_image, true);
 }

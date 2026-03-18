@@ -6,7 +6,8 @@
 Food::Food(int x, int y) :
 	m_foodPos(x, y),
 	m_isHold(false),
-	m_isLocked(false)
+	m_isLocked(false),
+	m_angle(0)
 {
 
 }
@@ -21,14 +22,28 @@ void Food::SetHold()
 	m_isHold = true;
 }
 
+// âÒì]
 void Food::Rotate()
 {
-
+	m_angle = (m_angle - 45) % 360;
 }
 
 bool Food::IsLocked() const
 {
 	return m_isLocked;
+}
+
+// ç¿ïWÇÃâÒì]
+static Vec2 RotatePoint(const Vec2& p, int angle)
+{
+	float rad = angle * 3.141592653589793f / 180.0f;
+	float cosA = cosf(rad);
+	float sinA = sinf(rad);
+
+	return Vec2(
+		p.x * cosA + p.y * sinA,
+		-p.x * sinA + p.y * cosA
+	);
 }
 
 void Food::Update()
@@ -57,10 +72,29 @@ void Food::Draw()
 
 	for (auto& p : m_parts)
 	{
-		Vec2 p1 = m_foodPos + Vec2(p.offsetX - p.width / 2, p.offsetY - p.height / 2);
-		Vec2 p2 = m_foodPos + Vec2(p.offsetX + p.width / 2, p.offsetY + p.height / 2);
-		
-		DrawBox((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y, color, true);
+		Vec2 local[4] =
+		{
+
+			Vec2(p.offsetX - p.width / 2,p.offsetY - p.height / 2),
+			Vec2(p.offsetX + p.width / 2,p.offsetY - p.height / 2),
+			Vec2(p.offsetX + p.width / 2,p.offsetY + p.height / 2),
+			Vec2(p.offsetX - p.width / 2,p.offsetY + p.height / 2),
+		};
+
+		for (int i = 0; i < 4; i++)
+		{
+			local[i] = RotatePoint(local[i], m_angle);
+			local[i] = local[i] + m_foodPos;
+		}
+
+		// éläpå`ï`âÊ
+		DrawQuadrangle(
+			(int)local[0].x, (int)local[0].y,
+			(int)local[1].x, (int)local[1].y,
+			(int)local[2].x, (int)local[2].y,
+			(int)local[3].x, (int)local[3].y,
+			color, true
+		);
 	}
 
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);

@@ -26,6 +26,12 @@ void FoodManager::HoldFood(Food& f)
 
 void FoodManager::Update()
 {
+	// 右クリックでおかずを回転させる
+	if (Input::IsMouseDown(Right) && m_heldFood)
+	{
+		m_heldFood->Rotate();
+	}
+
 	for (auto& f : m_foods)
 	{
 		f.Update();
