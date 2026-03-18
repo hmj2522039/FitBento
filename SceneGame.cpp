@@ -10,7 +10,7 @@
 void SceneGame::Initialize()
 {
 	// 弁当箱画像読み込み
-	int graph = LoadGraph("Resource/LunchBox.png");
+	int graph = LoadGraph("Resource/Bento.png");
 	
 	// フォント
 	m_fontHandle = CreateFontToHandle("HGP創英角ゴシックUB", 52, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
@@ -23,14 +23,18 @@ void SceneGame::Initialize()
 	{
 		BentoSlot s;
 		s.pos = Vec2(750, 350);
-		s.parts.push_back({ 0, 0, 150, 150 });
+		s.parts.push_back({ -50, 0, 50, 150 });
+		s.parts.push_back({ 0,50,150,50 });
+		s.tag = "test";
 		slots.push_back(s);
 	}
 
 	{
 		BentoSlot s;
 		s.pos = Vec2(750, 700);
-		s.parts.push_back({ 0, 0, 50, 150 });
+		s.parts.push_back({ 50, 0, 50, 150 });
+		s.parts.push_back({ 0,50,150,50 });
+		s.tag = "test1";
 		slots.push_back(s);
 	}
 
@@ -42,7 +46,7 @@ void SceneGame::Initialize()
 
 	// スコア・タイマー
 	m_score = 0;
-	m_timer = 90 * 60;
+	m_timer = 7 * 60;
 
 	m_lastGain = 0;
 	m_gainTimer = 0;

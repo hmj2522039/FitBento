@@ -77,6 +77,11 @@ int FoodManager::JudgeFood(const Food& f)
 
     if (!best) return 0;
 
+    if (f.GetTag() != best->tag)
+    {
+        return 0;
+    }
+
     int totalArea = 0;
 
     for (auto& fp : f.GetParts())

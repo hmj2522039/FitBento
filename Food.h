@@ -1,6 +1,7 @@
 #pragma once
-#include <vector>
 #include "Vector2.h"
+#include <vector>
+#include <string>
 
 // 複数矩形表示用
 struct BoxPart
@@ -21,6 +22,7 @@ private:
 	int m_angle;	// おかずの角度
 
 	std::vector<BoxPart> m_parts;
+	std::string m_tag;
 
 public:
 	Food(int x, int y);
@@ -34,6 +36,10 @@ public:
 	Vec2 GetPos()const { return m_foodPos; }
 	int GetAngle() const { return m_angle; }
 	const std::vector<BoxPart>& GetParts() const { return m_parts; }
+
+	// タグ用
+	void SetTag(const std::string& t) { m_tag = t; }
+	const std::string& GetTag() const { return m_tag; }
 
 	void Update();
 	void Draw();
