@@ -5,6 +5,7 @@ class GameMain
 {
 private:
 	int m_screen;	// ©ìƒXƒNƒŠ[ƒ“
+	int m_bgmHandle = -1;
 
 public:
 	GameMain() :

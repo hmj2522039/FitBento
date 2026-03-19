@@ -12,6 +12,11 @@ GameMain::~GameMain()
 	// 自作スクリーン破棄
 	DeleteGraph(m_screen);
 
+	if (m_bgmHandle != -1)
+	{
+		DeleteSoundMem(m_bgmHandle);
+	}
+
 	DxLib_End();
 }
 
@@ -29,6 +34,10 @@ void GameMain::Run()
 	{
 		throw - 1;
 	}
+
+	// BGM
+	m_bgmHandle = LoadSoundMem("Resource/Sound/BGM.wav");
+	PlaySoundMem(m_bgmHandle, DX_PLAYTYPE_LOOP);
 
 	// シーンの起動
 	SceneManager::GetInstance()->Setup(new SceneTitle(), new SceneLoading());
