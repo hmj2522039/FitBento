@@ -21,6 +21,8 @@ private:
 
 	int m_angle;	// おかずの角度
 
+	int m_graph = -1;
+
 	std::vector<BoxPart> m_parts;
 	std::string m_tag;
 
@@ -36,6 +38,9 @@ public:
 	Vec2 GetPos()const { return m_foodPos; }
 	int GetAngle() const { return m_angle; }
 	const std::vector<BoxPart>& GetParts() const { return m_parts; }
+
+	void SetGraph(int g) { m_graph = g; }
+	int GetGraph() const { return m_graph; }
 
 	// タグ用
 	void SetTag(const std::string& t) { m_tag = t; }

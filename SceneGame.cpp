@@ -10,7 +10,7 @@
 void SceneGame::Initialize()
 {
 	// 弁当箱画像読み込み
-	int graph = LoadGraph("Resource/Bento.png");
+	int graph = LoadGraph("Resource/LunchBox.png");
 	
 	// フォント
 	m_fontHandle = CreateFontToHandle("HGP創英角ゴシックUB", 52, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
@@ -22,19 +22,34 @@ void SceneGame::Initialize()
 	std::vector<BentoSlot> slots;
 	{
 		BentoSlot s;
-		s.pos = Vec2(750, 350);
-		s.parts.push_back({ -50, 0, 50, 150 });
-		s.parts.push_back({ 0,50,150,50 });
-		s.tag = "test";
+		s.pos = Vec2(485, 580);
+		s.parts.push_back({0, 0, 128, 128 });
+		s.tag = "meatball";
 		slots.push_back(s);
 	}
 
 	{
 		BentoSlot s;
-		s.pos = Vec2(750, 700);
-		s.parts.push_back({ 50, 0, 50, 150 });
-		s.parts.push_back({ 0,50,150,50 });
-		s.tag = "test1";
+		s.pos = Vec2(660, 320);
+		s.parts.push_back({ 0, 0, 90, 225 });
+		s.tag = "tamagoyaki";
+		slots.push_back(s);
+	}
+
+	{
+		BentoSlot s;
+		s.pos = Vec2(800, 420);
+		s.parts.push_back({ 98, 0, 70 , 220 });
+		s.parts.push_back({ 5, -68, 120, 85 });
+		s.tag = "edamame";
+		slots.push_back(s);
+	}
+
+	{
+		BentoSlot s;
+		s.pos = Vec2(850, 600);
+		s.parts.push_back({ 0,0, 320, 80 });
+		s.tag = "sausage";
 		slots.push_back(s);
 	}
 
@@ -46,7 +61,7 @@ void SceneGame::Initialize()
 
 	// スコア・タイマー
 	m_score = 0;
-	m_timer = 7 * 60;
+	m_timer = 15 * 60;
 
 	m_lastGain = 0;
 	m_gainTimer = 0;

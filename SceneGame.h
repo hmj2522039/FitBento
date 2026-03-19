@@ -14,7 +14,7 @@ private:
     int m_fontHandle;
 
     int m_score = 0;
-    int m_timer = 7 * 60;
+    int m_timer = 15 * 60;
 
     int m_lastGain = 0;
     int m_gainTimer = 0;

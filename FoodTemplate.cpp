@@ -1,4 +1,5 @@
 #include "FoodTemplate.h"
+#include "DxLib.h"
 
 Food FoodTemplate::CreateFoodAt(float x, float y)const
 {
@@ -9,6 +10,12 @@ Food FoodTemplate::CreateFoodAt(float x, float y)const
 	}
 
 	f.SetTag(tag);
+
+	if (!imagePath.empty())
+	{
+		int g = LoadGraph(imagePath.c_str());
+		f.SetGraph(g);
+	}
 
 	return f;
 }

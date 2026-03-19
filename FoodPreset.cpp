@@ -6,52 +6,34 @@ std::vector<FoodTemplate> FoodPreset::CreateFoodTemplates()
 	std::vector<FoodTemplate> foods;
 
 	// この下に生成するおかずを記述
-	FoodTemplate test;
-	test.name = "test";
-	test.tag = "test";
-	test.parts.push_back({ -50, 0, 50, 150 });
-	test.parts.push_back({ 0,50,150,50 });
-	foods.push_back(test);
+	FoodTemplate meatball;
+	meatball.name = "ミートボール";
+	meatball.tag = "meatball";
+	meatball.imagePath = "Resource/meatball.png";
+	meatball.parts.push_back({ 0, 0, 128, 128 });
+	foods.push_back(meatball);
 	
-	FoodTemplate test1;
-	test1.name = "test1";
-	test1.tag = "test1";
-	test1.parts.push_back({ 50, 0, 50, 150 });
-	test1.parts.push_back({ 0,50,150,50 });
-	foods.push_back(test1);
+	FoodTemplate tamagoyaki;
+	tamagoyaki.name = "たまご焼き";
+	tamagoyaki.tag = "tamagoyaki";
+	tamagoyaki.imagePath = "Resource/tamagoyaki.png";
+	tamagoyaki.parts.push_back({ 0, 0, 90, 225 });
+	foods.push_back(tamagoyaki);
 	
-	FoodTemplate test2;
-	test2.name = "test2";
-	test2.parts.push_back({ 0, 0, 120, 120 });
-	foods.push_back(test2);
+	FoodTemplate sausage;
+	sausage.name = "ソーセージ";
+	sausage.tag = "sausage";
+	sausage.imagePath = "Resource/sausage.png";
+	sausage.parts.push_back({ 0, 0, 80, 320 });
+	foods.push_back(sausage);
 
-	FoodTemplate test3;
-	test3.name = "test3";
-	test3.parts.push_back({ 50, 0, 50, 150 });
-	test3.parts.push_back({ 0,-50,150,50 });
-	foods.push_back(test3);
-
-	FoodTemplate test4;
-	test4.name = "test4";
-	test4.parts.push_back({ -50, 0, 50, 150 });
-	test4.parts.push_back({ 0,-50,150,50 });
-	foods.push_back(test4);
-
-	FoodTemplate test5;
-	test5.name = "test5";
-	test5.parts.push_back({ 0, 0, 50, 150 });
-	test5.parts.push_back({ 0,50,150,50 });
-	foods.push_back(test5);
-
-	FoodTemplate test6;
-	test6.name = "test6";
-	test6.parts.push_back({ 0,0,100,230 });
-	foods.push_back(test6);
-
-	FoodTemplate test7;
-	test7.name = "test7";
-	test7.parts.push_back({ 0, 0, 150, 50 });
-	foods.push_back(test7);
+	FoodTemplate edamame;
+	edamame.name = "枝豆";
+	edamame.tag = "edamame";
+	edamame.imagePath = "Resource/edamame.png";
+	edamame.parts.push_back({ 70,-35, 85, 120 });
+	edamame.parts.push_back({ 0,60,220,70 });
+	foods.push_back(edamame);
 
 	return foods;
 }

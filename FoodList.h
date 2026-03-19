@@ -11,7 +11,7 @@ struct FoodListLayout
 
 	// リストにあるおかずの範囲
 	int m_listFoodWidth	= 350;
-	int m_listFoodHeight = 200;
+	int m_listFoodHeight = 300;
 
 	// 名前表示のオフセット
 	int m_nameOffsetX = 20;
@@ -19,7 +19,7 @@ struct FoodListLayout
 
 	// 項目ごとのおかずのオフセット
 	int m_foodOffsetX = 240;
-	int m_foodOffsetY = 90;
+	int m_foodOffsetY = 140;
 
 	// 上下の余白
 	int m_marginTopBottom = 100;
