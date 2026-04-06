@@ -10,5 +10,7 @@ struct FoodTemplate
 	std::string imagePath;
 	std::vector<BoxPart>parts;
 
+	int m_graph = -1;
+
 	Food CreateFoodAt(float x, float y)const;
 };

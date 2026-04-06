@@ -11,10 +11,9 @@ Food FoodTemplate::CreateFoodAt(float x, float y)const
 
 	f.SetTag(tag);
 
-	if (!imagePath.empty())
+	if (m_graph != -1)
 	{
-		int g = LoadGraph(imagePath.c_str());
-		f.SetGraph(g);
+		f.SetGraph(m_graph);
 	}
 
 	return f;

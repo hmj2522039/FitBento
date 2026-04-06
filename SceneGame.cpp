@@ -74,6 +74,14 @@ void SceneGame::Finalize()
 		delete m_lunchBox;
 		m_lunchBox = nullptr;
 	}
+
+	if (m_fontHandle != -1)
+	{
+		DeleteFontToHandle(m_fontHandle);
+		m_fontHandle = -1;
+	}
+
+
 }
 
 void SceneGame::Update()
